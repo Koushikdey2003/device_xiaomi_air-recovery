@@ -1,6 +1,9 @@
 import tee-supplicant.rc
 import miteelog.rc
 
+on early-init
+    start adbd
+
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
     setprop crypto.ready 1
