@@ -173,6 +173,9 @@ TW_MAX_BRIGHTNESS := 2047
 TW_FRAMERATE := 90
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone3/temp"
 
+# Handle /data/media
+RECOVERY_SDCARD_ON_DATA := true
+
 # Logcat
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
