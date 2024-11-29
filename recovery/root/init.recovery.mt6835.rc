@@ -1,5 +1,9 @@
+import tee-supplicant.rc
+import miteelog.rc
+
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
+    setprop crypto.ready 1
 
 service boot-hal-1-2 /system/bin/android.hardware.boot@1.2-service
     interface android.hardware.boot@1.0::IBootControl default
@@ -8,6 +12,57 @@ service boot-hal-1-2 /system/bin/android.hardware.boot@1.2-service
     user root
     group root
     seclabel u:r:recovery:s0
+
+on fs
+    install_keyring
+
+# We need vold early for metadata encryption
+on early-fs
+    start vold
+
+service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    class hal
+    user system
+    group system
+    seclabel u:r:recovery:s0
+
+service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@2.0-service.mitee
+	class early_hal
+	user system
+	group system drmrpc
+    seclabel u:r:recovery:s0
+
+on property:crypto.ready=1
+    start vendor.keymint-mitee
+
+on property:vendor.sys.listener.registered=true
+    start vendor.gatekeeper-1-0
+    start vendor.keymint-mitee
+
+on property:ro.crypto.state=unsupported
+    stop tee-supplicant
+    stop vendor.keymint-mitee
+    stop vendor.gatekeeper-1-0
+    stop miteelog
+
+on property:ro.crypto.state=unencrypted
+    stop tee-supplicant
+    stop vendor.keymint-mitee
+    stop vendor.gatekeeper-1-0
+    stop miteelog
+
+on property:twrp.decrypt.done=true
+    stop tee-supplicant
+    stop vendor.keymint-mitee
+    stop vendor.gatekeeper-1-0
+    stop miteelog
+        
+on property:crypto.ready=0
+    stop tee-supplicant
+    stop vendor.keymint-mitee
+    stop vendor.gatekeeper-1-0
+    stop miteelog
 
 on boot
     start boot-hal-1-2
