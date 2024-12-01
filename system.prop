@@ -1,0 +1,8 @@
+# ADB
+ro.secure=0
+ro.adb.secure=0
+ro.debuggable=1
+
+# Platform
+ro.vendor.mediatek.platform=MT6835
+ro.hardware=mt6835
