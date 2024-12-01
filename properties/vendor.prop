@@ -1,0 +1,23 @@
+# ADB
+persist.adb.nonblocking_ffs=0
+
+# Crypto
+ro.crypto.volume.filenames_mode=aes-256-cts
+
+# Dynamic partitions
+ro.boot.dynamic_partitions=true
+
+# FRP
+ro.frp.pst=/dev/block/by-name/frp
+
+# Platform
+ro.vendor.mediatek.platform=MT6835
+
+# Partition
+ro.vendor.mtk_emmc_support=1
+ro.vendor.mtk_f2fs_enable=1
+
+# TEE
+ro.vendor.mtk_tee_gp_support=1
+ro.vendor.mtk_mitee_support=1
+ro.vendor.mtk_microtrust_tee_support=1
