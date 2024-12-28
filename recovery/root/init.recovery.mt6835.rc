@@ -3,3 +3,15 @@ import /init.recovery.project.rc
 on fs && property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
     # set charging free due to it wait for USB activation
+
+service vendor.boot-hal-1-2 /vendor/bin/hw/android.hardware.boot@1.2-service
+    interface android.hardware.boot@1.0::IBootControl default
+    interface android.hardware.boot@1.1::IBootControl default
+    interface android.hardware.boot@1.2::IBootControl default
+    class early_hal
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+on boot
+   start vendor.boot-hal-1-2
