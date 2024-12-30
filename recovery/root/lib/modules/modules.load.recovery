@@ -189,3 +189,7 @@ arm_dsu_pmu.ko
 uload_ind.ko
 load_track.ko
 sec.ko
+nt36528_spi.ko
+ft8057p_spi.ko
+lct_tp.ko
+xiaomi_tp.ko
