@@ -62,12 +62,7 @@ BOARD_DTB_OFFSET := 0x07c88000
 BOARD_RAMDISK_USE_LZ4 := true
 
 BOARD_KERNEL_CMDLINE += \
-    bootopt=64S3,32N2,64N2 \
-    bootconfig
-
-BOARD_BOOTCONFIG += \
-    androidboot.selinux=permissive \
-    androidboot.init_fatal_reboot_target=recovery
+    bootopt=64S3,32N2,64N2
 
 BOARD_MKBOOTIMG_ARGS += \
     --header_version $(BOARD_BOOT_HEADER_VERSION) \
