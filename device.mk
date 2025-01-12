@@ -4,6 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Fastboot
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.1-impl-mock
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
