@@ -52,3 +52,7 @@ BOARD_MKBOOTIMG_ARGS := \
 	--ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
 	--tags_offset $(BOARD_TAGS_OFFSET) \
 	--dtb_offset $(BOARD_TAGS_OFFSET)
+
+# Prebuilt
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
