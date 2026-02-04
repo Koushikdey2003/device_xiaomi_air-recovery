@@ -1,0 +1,5 @@
+# Platform
+ro.vendor.mediatek.platform=MT6835
+
+# USB MTP
+ro.sys.usb.storage.type=mtp

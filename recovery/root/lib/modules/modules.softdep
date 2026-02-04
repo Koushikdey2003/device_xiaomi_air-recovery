@@ -1,0 +1,3 @@
+# Soft dependencies extracted from modules themselves.
+softdep xm_smart_chg lc charger
+softdep mt6835_dcm pre:mtk_dcm.ko
