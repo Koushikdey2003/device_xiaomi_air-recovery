@@ -77,7 +77,7 @@ TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 # Load vendor_boot modules
-TW_LOAD_VENDOR_MODULES := "ft8057p_spi.ko nt36528_spi.ko xiaomi_tp.ko lct_tp.ko"
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
 TW_LOAD_VENDOR_BOOT_MODULES := true
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
