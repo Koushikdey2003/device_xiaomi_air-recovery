@@ -36,6 +36,12 @@ PRODUCT_PACKAGES_DEBUG += \
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# EROFS tools
+PRODUCT_PACKAGES += \
+    fsck.erofs.recovery \
+    mkfs.erofs.recovery \
+    dump.erofs.recovery
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example_recovery
