@@ -1,8 +1,3 @@
-nt36528_spi.ko
-ft8057p_spi.ko
-lct_tp.ko
-xiaomi_tp.ko
-mt6377-accdet.ko
 bootprof.ko
 irq-dbg.ko
 dbgtop-drm.ko
